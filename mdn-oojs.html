@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>
+      This example requires you to enter commands in your browser's JavaScript
+      console (see
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools"
+        >What are browser developer tools</a
+      >
+      for more information).
+    </p>
+  </body>
+
+  <script>
+    /*
+      Object literal person.
+      Dibilang object literal kerena dipisahkan oleh koma
+    */
+    const person = {
+      name: ["Bob", "Smith"],
+      /* calling a name : person.name= [bob, smith]
+       or person.name[1]= smith */
+      age: 32,
+      gender: "male",
+      interests: ["music", "skiing"],
+      bio: function() {
+        alert(
+          this.name[0] +
+            " " +
+            this.name[1] +
+            " is " +
+            this.age +
+            " years old. He likes " +
+            this.interests[0] +
+            " and " +
+            this.interests[1] +
+            "."
+        );
+      },
+      greeting: function() {
+        alert("Hi! I'm " + this.name[0] + ".");
+      }
+    };
+
+    const person2 = {
+      //- possible: object inside object
+      name: {
+        first: "Bob",
+        last: "Smith"
+      },
+      /*
+      caling a name: person2.name.first = bob
+      or with bracket notation instead with . dot notation
+      like: person2['name']['first']
+      */
+      age: 32,
+      gender: "male",
+      interests: ["music", "skiing"],
+      bio: function() {
+        alert(
+          this.name[0] +
+            " " +
+            this.name[1] +
+            " is " +
+            this.age +
+            " years old. He likes " +
+            this.interests[0] +
+            " and " +
+            this.interests[1] +
+            "."
+        );
+      },
+      greeting: function() {
+        alert("Hi! I'm " + this.name[0] + ".");
+      }
+      /*
+      eyes: "hazel",
+      farewell: function() {
+        alert("Bye everybody!");
+      }
+      */
+    };
+    person2["eyes"] = "hazel";
+    person2.farewell = function() {
+      alert("Bye everybody!");
+    };
+
+    const name = "anisa";
+    function createNewPerson(name) {
+      //name = "anisa";
+      const obj = {};
+      obj.name = name;
+      obj.greeting = function() {
+        alert("Hi! Im" + obj.name + ".");
+      };
+      console.log("globaler Name: " + name);
+      return obj;
+    }
+    const salva = createNewPerson("Salva");
+
+    function createNewPerson2(name) {
+      //name = "anisa";
+      this.name = name;
+      this.greeting = function() {
+        alert("Hi! Im" + this.name + ".");
+      };
+      console.log("globaler Name2: " + this.name);
+    }
+    const xixi = createNewPerson2("Xixi");
+  </script>
+</html>
